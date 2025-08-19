@@ -4,77 +4,157 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Krishna Anand</title>
-
+    <title>Krishna's Profile</title>
     <link rel="stylesheet" href="style.css">
+    
 </head>
 
 <body>
+    <body class="theme-blue">
     <header>
-        <div class="head">
+        <div class="profile-container">
+            <img src="profile.jpg" alt="Profile photo of Krishna" class="profile-pic">
             <h1>Krishna Anand</h1>
+            <p>Science Enthusisast | Programmer | Active Learner</p>
         </div>
         <nav>
             <ul>
-                <li>
-                    <a href="index.html">Home</a>
-                </li>
-                <li>
-                    <a href="https://www.youtube.com/@pythonkrishna290" target="_blank">YouTube</a>
-                </li>
-                <li>
-                    <a href="https://github.com/krishnaanand2908" target="_blank">GitHub</a>
-                </li>
-                <li>
-                    <a href="mailto:pythonkrishna290@gmail.com">Gmail</a>
-                </li>
-                <li>
-                    <a href="https://replit.com/@PythonKrishna29" target="_blank">Replit</a>
-                </li>
+                <li><a href="https://krishnaanand2908.github.io" target="_blank">Home</a></li>
+                <li><a href="tutorials.html">Tutorials</a></li>
+                <li><a href="poetry.html">Poems</a></li>
+                <li><a href="https://github.com/krishnaanand2908" target="_blank">Github</a></li>
+                <li><a href="https://replit.com/@PythonKrishna29" target="_blank">Replit</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#tech_skills">Tech Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+                
+                
             </ul>
         </nav>
+        <button id="theme-toggle" class="toggle-btn"></button>
+
     </header>
 
     <main>
-        <!-- Side navigation bar -->
-        <div class="sidenav">
-            <h2>More</h2>
+        <section id="about">
+            <h2>About</h2>
+            <p>Enthusiastic programmer; Active learner;</p>
+        </section>
+
+        <section id="ambition">
+            <h2>My Ambition</h2>
+            <p>I aspire to create a revolutionary AI model that the world doesn’t yet realize it needs.</p>
+        </section>
+
+        <section id="skills">
+            <h2>Skills</h2>
             <ul>
-                <li>
-                    <a href="gallery.html" target="_blank">Gallery</a>
-                <li>
-                    <a href="pythontuts.html">Python Tutorials</a>
-                </li>
-                <li>
-                    <a href="ctuts.html">C Tutorials</a>
-                </li>
-                <li>
-                    <a href="cpptuts.html">C++ Tutorials</a>
-                </li>
-                <li>
-                    <a href="ytreview.html">Channel Review</a>
-                </li>
+                <li>Python Programming</li>
+                <li>AI Literacy</li>
+                <li>Poetry</li>
+                <li>Fiction Writing</li>
+                <li>Communication</li>
             </ul>
-        </div>
-        <section class="aboutme">
-            <h1>About Krishna Anand</h1>
-            <p>Hi, I am Krishna Anand, an enthusiast learner and a teaching lover whose ardent pursuit is to create a <strong>revolutionary AI model.</strong>
-                I try to share my metaphorical grain of knowledge with everybody, and for the same this website has 3 tutorial tabs for python, c and c++.
+        </section>
+
+        <section id="education">
+            <h2>Educational Background</h2>
+            <p>
+                Completed 10th BOARDS from <strong>PM SHRI Kendriya Vidalaya Jamalpur, Munger</strong>. Currently
+                pursuing 11th grade in Science stream at the same institution.
+                <br>
             </p>
+        </section>
 
-            <!-- <div class="images"><img src="Images/img1.jpg" alt="Problem in Loading Image" height="80px">
-                <img src="Images/img2.jpg" alt="Problem in Loading Image" height="80px">
-                <img src="Images/img3.jpg" alt="Problem in Loading Image" height="80px">
-                <img src="Images/img4.jpg" alt="Problem in Loading Image" height="80px">
-            </div> -->
+        <section id="hobbies">
+            <h2>Hobbies</h2>
+            <ul>
+                <li>Chess</li>
+                <li>Coding</li>
+                <li>Poetry (Hindi & English)</li>
+                <li>Story Writing</li>
+                <li>Tinkering & Experimentation</li>
+            </ul>
+        </section>
 
+        <section id="achievements">
+            <h2>Achievements</h2>
+            <ul>
+                <li>District Rank 1 – Inspire Award</li>
+                <li>School Rank 1 – SOF NSO & SOF ICSO</li>
+                <li>District Rank 1 – RBVP</li>
+                <li>District Rank 1 – VVM</li>
+                <li>Tritya Sopan Qualified – Scouts</li>
+                <li>Rajya Puruskar Qualified – Scouts</li>
+                <li>Perfect Score in Artificial Intelligence (Class 10th Boards)</li>
+            </ul>
+        </section>
 
+        <section id="tech_skills">
+            <h2>Tech Skills</h2>
+            <ul>
+                <li>Python [NumPy, Tkinter, Custom Tkinter, Pygame, Fontstyle]</li>
+                <li>Canva</li>
+                <li>Arduino</li>
+                <li>HTML/CSS</li>
+                <li>CSS</li>
+                <li>C/C++</li>
+                <li>Raspberry Pi</li>
+            </ul>
+        </section>
+
+        <section id="affiliations">
+            <h2>Affiliations</h2>
+            <ul>
+                <li>Member – Breakthrough Science Society (BSS)</li>
+                <li>Student – Kendriya Vidyalaya Sangathan</li>
+                <li>Aiforkids Ranker</li>
+            </ul>
+        </section>
+
+        <section id="contact">
+            <h2>Contact</h2>
+            <p>Email: <a href="mailto:studentkrishnaanand@gmail.com">studentkrishnaanand@gmail.com</a></p>
         </section>
     </main>
 
     <footer>
         <p>&copy; 2025 Krishna Anand</p>
     </footer>
+
+    <script>
+(() => {
+  const body = document.body;
+  const btn = document.getElementById('theme-toggle');
+
+  // Load saved theme (if any)
+  const saved = localStorage.getItem('theme'); // 'blue' | 'gold' | null
+  if (saved === 'gold') {
+    body.classList.remove('theme-blue');
+    body.classList.add('theme-gold');
+  } else {
+    body.classList.add('theme-blue');
+    body.classList.remove('theme-gold');
+  }
+
+  const setLabel = () => {
+    btn.textContent = body.classList.contains('theme-blue')
+      ? 'Switch to Gold Theme'
+      : 'Switch to Blue Theme';
+  };
+  setLabel();
+
+  btn.addEventListener('click', () => {
+    body.classList.toggle('theme-blue');
+    body.classList.toggle('theme-gold');
+    localStorage.setItem('theme', body.classList.contains('theme-blue') ? 'blue' : 'gold');
+    setLabel();
+  });
+})();
+document.getElementById("theme-toggle").addEventListener("click", function() {
+    document.body.classList.toggle("dark-mode");
+  });
+</script>
 
 </body>
 

@@ -1,324 +1,280 @@
-@import url('https://fonts.googleapis.com/css2?family=Baloo+Bhai+2:wght@400;500&family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Bhai+2:wght@500&family=Poppins:wght@300;400;600&display=swap');
 
-a:hover {
-    color: cadetblue;
-}
-
-a:link {
-    color: burlywood;
-}
-
-a:active {
-    color: darkslategrey;
-}
-
+/* ========== GLOBAL ========== */
 body {
-    font-family: 'Baloo Bhai 2', sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  line-height: 1.6;
+  overflow-x: hidden;
+  position: relative;
+  transition: background 0.4s ease, color 0.4s ease;
 }
 
+/* FLOAT ANIMATION (for background orbs) */
+@keyframes float {
+  0% { transform: translateY(0px) scale(1); }
+  50% { transform: translateY(-30px) scale(1.05); }
+  100% { transform: translateY(0px) scale(1); }
+}
+
+/* ========== THEME TOGGLE BUTTON ========== */
+#theme-toggle {
+  position: fixed;
+  top: 15px;
+  right: 20px;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 30px;
+  color: #fff;
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+/* Blue Theme Button */
+.theme-blue #theme-toggle {
+  background: linear-gradient(135deg, #4a00e0, #8e2de2);
+  box-shadow: 0 0 12px rgba(142, 45, 226, 0.8);
+}
+.theme-blue #theme-toggle:hover {
+  background: linear-gradient(135deg, #ffd700, #ff9a00);
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.9);
+  transform: scale(1.08);
+}
+
+/* Gold Theme Button */
+.theme-gold #theme-toggle {
+  background: linear-gradient(135deg, #ffd700, #ff9a00);
+  box-shadow: 0 0 12px rgba(255, 215, 0, 0.8);
+}
+.theme-gold #theme-toggle:hover {
+  background: linear-gradient(135deg, #4a00e0, #8e2de2);
+  box-shadow: 0 0 20px rgba(142, 45, 226, 0.9);
+  transform: scale(1.08);
+}
+
+/* ========== BLUE THEME ========== */
+.theme-blue {
+  background: linear-gradient(135deg, #0a0a0f, #1a1a2e);
+  color: #e0e0ff;
+}
+.theme-blue::before,
+.theme-blue::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  z-index: -1;
+  opacity: 0.4;
+  animation: float 14s infinite ease-in-out alternate;
+}
+.theme-blue::before {
+  width: 320px; height: 320px;
+  top: -80px; left: -120px;
+  background: radial-gradient(circle, #6d28d9, #3b0764);
+}
+.theme-blue::after {
+  width: 420px; height: 420px;
+  bottom: -120px; right: -150px;
+  background: radial-gradient(circle, #0ea5e9, #1e3a8a);
+}
+.theme-blue header {
+  background: linear-gradient(135deg, #1e1b4b, #312e81, #4c1d95);
+  color: white;
+  text-align: center;
+  padding: 2em 1em;
+  border-bottom: 5px solid #3b82f6;
+  box-shadow: 0px 4px 15px rgba(100, 80, 255, 0.4);
+  border-radius: 0 0 40px 40px;
+}
+.theme-blue header h1 { color: #e0e0ff; }
+.theme-blue header nav ul li a {
+  color: #cbd5ff;
+  background: rgba(120, 80, 255, 0.15);
+}
+.theme-blue header nav ul li a:hover {
+  background: linear-gradient(90deg, #3b82f6, #9333ea);
+  color: #fff;
+}
+.theme-blue section {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(120, 80, 255, 0.3);
+  box-shadow: 0 4px 18px rgba(50, 30, 100, 0.6);
+}
+.theme-blue section h2 { color: #a78bfa; }
+.theme-blue section ul li {
+  background: linear-gradient(135deg, rgba(142, 45, 226, 0.2), rgba(74, 0, 224, 0.2));
+  box-shadow: 0 0 8px rgba(142, 45, 226, 0.4);
+}
+.theme-blue footer {
+  background: linear-gradient(135deg, #1e1b4b, #4c1d95);
+  color: #cbd5ff;
+}
+
+/* ========== GOLD THEME ========== */
+.theme-gold {
+  background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+  color: #f5f5f5;
+}
+.theme-gold::before,
+.theme-gold::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  z-index: -1;
+  opacity: 0.5;
+  animation: float 12s infinite ease-in-out alternate;
+}
+.theme-gold::before {
+  width: 300px; height: 300px;
+  top: -80px; left: -100px;
+  background: radial-gradient(circle, #ff4500, #d72638);
+}
+.theme-gold::after {
+  width: 400px; height: 400px;
+  bottom: -120px; right: -150px;
+  background: radial-gradient(circle, #ffd700, #ff8c42);
+}
+.theme-gold header {
+  background: linear-gradient(135deg, #d72638, #ff8c42, #ffd700);
+  border-bottom: 5px solid #ff4500;
+  box-shadow: 0px 4px 12px rgba(0,0,0,0.4);
+}
+.theme-gold header h1 { color: white; }
+.theme-gold header nav ul li a { color: white; background: rgba(255,255,255,0.1); }
+.theme-gold header nav ul li a:hover {
+  background: linear-gradient(90deg, #ff4500, #ffd700);
+  color: black;
+}
+.theme-gold section {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+}
+.theme-gold section h2 { color: #ffd700; }
+.theme-gold section ul li {
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(255, 140, 0, 0.2));
+  box-shadow: 0 0 8px rgba(255, 215, 0, 0.4);
+}
+.theme-gold footer {
+  background: linear-gradient(135deg, #ff4500, #d72638);
+  color: white;
+}
+
+/* ========== SHARED STYLES ========== */
 header {
-    background-color: rgb(51, 51, 51);
-    color: white;
-    text-align: center;
-    padding: 1em;
+  text-align: center;
+  padding: 2em 1em;
+  border-radius: 0 0 40px 40px;
 }
-
-.head {
-    margin: 0 auto;
-    font-size: 1.2em;
-    /* Adjust the font size as needed */
-}
-
+header h1 { font-size: 2.4em; font-weight: 600; margin: 0.2em 0; }
 header nav ul {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 1.2em;
+  padding: 0;
 }
-
-header nav ul li {
-    list-style: none;
-    margin: 0 2em;
-    font-size: 1.2em;
-}
-
+header nav ul li { list-style: none; margin: 0.6em 1.2em; }
 header nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 0.9em;
-    /* Adjust the font size as needed */
+  text-decoration: none;
+  font-weight: 600;
+  padding: 10px 18px;
+  border-radius: 25px;
+  transition: all 0.4s ease;
 }
 
-header nav ul li a:hover {
-    color: orange;
-}
-
-header nav ul li a:link {
-    color: white;
-}
-
-header nav ul li a:active {
-    color: white;
+.profile-pic {
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 0.8em;
 }
 
 section {
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 15px;
+  max-width: 900px;
+  margin: 60px auto;
+  padding: 25px;
+  border-radius: 25px;
+  backdrop-filter: blur(10px);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+section:hover { transform: scale(1.02); }
+
+section h2 {
+  font-size: 1.8em;
+  margin-bottom: 12px;
+  position: relative;
+}
+section h2::after {
+  content: '';
+  display: block;
+  width: 70px;
+  height: 4px;
+  margin-top: 6px;
+  border-radius: 50px;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Baloo+Bhai+2:wght@400;500&family=Poppins&display=swap');
-
-a:hover {
-    color: cadetblue;
+section ul { list-style: none; padding: 0; }
+section ul li {
+  margin: 10px 0;
+  padding: 12px 20px;
+  border-radius: 30px;
+  font-weight: 500;
+  text-align: left;
+  transition: transform 0.3s ease, background 0.3s ease;
 }
-
-a:link {
-    color: burlywood;
-}
-
-a:active {
-    color: darkslategrey;
-}
-
-body {
-    font-family: 'Baloo Bhai 2', sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-header {
-    background-color: rgb(51, 51, 51);
-    color: white;
-    text-align: center;
-    padding: 1em;
-}
-
-.head {
-    margin: 0 auto;
-    font-size: 1.2em;
-    /* Adjust the font size as needed */
-}
-
-header nav ul {
-    display: flex;
-    justify-content: center;
-}
-
-header nav ul li {
-    list-style: none;
-    margin: 0 2em;
-    font-size: 1.2em;
-}
-
-header nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 0.9em;
-    /* Adjust the font size as needed */
-}
-
-header nav ul li a:hover {
-    color: orange;
-}
-
-header nav ul li a:link {
-    color: white;
-}
-
-header nav ul li a:active {
-    color: white;
-}
-
-section {
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 15px;
-}
+section ul li:hover { transform: scale(1.05); }
 
 footer {
-    background-color: rgb(51, 51, 51);
-    color: white;
-    text-align: center;
-    padding: 12;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
+  text-align: center;
+  padding: 1.2em;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  font-weight: 500;
+  letter-spacing: 1px;
+  border-radius: 20px 20px 0 0;
 }
 
-code {
-    padding: 10px;
-    margin: 10px;
-    display: block;
-    background-color: #f8f8f8;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-output {
-    padding: 10px;
-    margin: 10px;
-    display: block;
-    background-color: #f3f4f5;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-/* sidenav */
-.sidenav {
-    height: 100%;
-    width: 200px;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: rgb(65, 64, 64);
-    overflow-x: hidden;
-}
-
-.sidenav h2 {
-    color: white;
-    text-align: center;
-    /* background-color: rgb(187, 181, 175); */
-    padding: 4px 14px;
-    border-radius: 12px;
-    font-size: xx-large;
-}
-
-.sidenav ul li a {
-    color: white;
-    text-decoration: none;
-    font-weight: 600;
-}
-
-.sidenav ul li a:hover {
-    color: orange;
-}
-
-.sidenav ul li a:link {
-    color: white;
-}
-
-.sidenav ul li a:active {
-    color: white;
-}
-
-.sidenav ul li {
-    list-style: none;
-}
-
+/* RESPONSIVE */
 @media only screen and (max-width: 768px) {
-    header nav ul {
-        display: block;
-        text-align: center;
-    }
-    
-    header nav ul li {
-        margin: 0.5em 0;
-        font-size: 1.1em;
-    }
-    
-    header nav ul li a {
-        font-size: 0.9em;
-    }
+  /* Navbar adjustments */
+  header nav ul {
+    display: flex;
+    flex-direction: column; /* stack vertically */
+    align-items: center;
+    margin-top: 1em;
+    padding: 0;
+  }
+  header nav ul li {
+    margin: 0.5em 0;
+  }
+  header nav ul li a {
+    padding: 8px 14px;
+    font-size: 14px;
+  }
 
-    .sidenav {
-        width: 100%;
-        height: auto;
-        position: relative;
-    }
+  /* Move theme toggle below navbar */
+  #theme-toggle {
+    position: relative;  /* flow in page */
+    top: auto;
+    right: auto;
+    margin: 15px 0 0 0;
+    padding: 10px 18px;
+    font-size: 14px;
+  }
+
+  /* Sections */
+  section {
+    margin: 40px 15px;
+    padding: 20px;
+  }
 }
 
 
-code {
-    padding: 10px;
-    margin: 10px;
-    display: block;
-    background-color: #f8f8f8;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
 
-output {
-    padding: 10px;
-    margin: 10px;
-    display: block;
-    background-color: #f3f4f5;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-/* sidenav */
-.sidenav {
-    height: 100%;
-    width: 200px;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: rgb(65, 64, 64);
-    overflow-x: hidden;
-}
-
-.sidenav h2 {
-    color: white;
-    text-align: center;
-    /* background-color: rgb(187, 181, 175); */
-    padding: 4px 14px;
-    border-radius: 12px;
-    font-size: xx-large;
-}
-
-.sidenav ul li a {
-    color: white;
-    text-decoration: none;
-    font-weight: 600;
-}
-
-.sidenav ul li a:hover {
-    color: orange;
-}
-
-.sidenav ul li a:link {
-    color: white;
-}
-
-.sidenav ul li a:active {
-    color: white;
-}
-
-.sidenav ul li {
-    list-style: none;
-}
-
-@media only screen and (max-width: 768px) {
-
-    header nav ul {
-        display: flex;
-        justify-content: center;
-    }
-    
-    header nav ul li {
-        list-style: none;
-        margin: 0.3em;
-        font-size: 1.1em;
-    }
-    
-    header nav ul li a {
-        color: white;
-        text-decoration: none;
-        font-weight: 600;
-        font-size: 0.9em;
-        /* Adjust the font size as needed */
-    }
-
-    .sidenav {
-        width: 100%;
-        height: auto;
-        position: relative;
-    }
-}
