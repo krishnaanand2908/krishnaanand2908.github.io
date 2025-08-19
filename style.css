@@ -241,40 +241,75 @@ footer {
   border-radius: 20px 20px 0 0;
 }
 
-/* RESPONSIVE */
+/* Base fix for body/html */
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+}
+
 @media only screen and (max-width: 768px) {
+
+  /* Floating orbs scale moderately for mobile */
+  .theme-blue::before, .theme-blue::after,
+  .theme-gold::before, .theme-gold::after {
+    width: 200px;
+    height: 200px;
+    top: -60px; 
+    left: -60px; 
+    bottom: auto;
+    right: auto;
+    opacity: 0.3;
+  }
+
   /* Navbar adjustments */
   header nav ul {
     display: flex;
-    flex-direction: column; /* stack vertically */
+    flex-direction: column;
     align-items: center;
+    gap: 15px;
     margin-top: 1em;
     padding: 0;
   }
-  header nav ul li {
-    margin: 0.5em 0;
-  }
   header nav ul li a {
-    padding: 8px 14px;
-    font-size: 14px;
+    width: 70%;             /* larger clickable area */
+    padding: 12px 0;        /* taller buttons */
+    font-size: 16px;
+    text-align: center;
+    border-radius: 35px;    /* more circular */
   }
 
-  /* Move theme toggle below navbar */
+  /* Theme toggle centered below navbar */
   #theme-toggle {
-    position: relative;  /* flow in page */
-    top: auto;
-    right: auto;
-    margin: 15px 0 0 0;
-    padding: 10px 18px;
-    font-size: 14px;
+    position: relative;      /* flows below navbar */
+    display: block;
+    margin: 15px auto;       /* center horizontally */
+    padding: 12px 24px;      
+    font-size: 16px;
+    border-radius: 35px;     /* matches navbar buttons */
+    text-align: center;
+    align-items: center;
   }
 
   /* Sections */
   section {
-    margin: 40px 15px;
+    margin: 20px 10px;
     padding: 20px;
+    max-width: 100%;
+    box-sizing: border-box;
+    padding-bottom: 100px; /* safe space for fixed footer */
+  }
+
+  /* Footer stays fixed */
+  footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 1em 10px;
+    font-size: 14px;
+    border-radius: 20px 20px 0 0;
   }
 }
-
 
 
