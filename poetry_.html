@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Poetry Page Have Been Removed</title>
+  <style>
+    /* Reset */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      transition: background 0.5s, color 0.5s;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Blue theme */
+    body.blue {
+      background: linear-gradient(135deg, #0a0a0f, #1a1a2e);
+      color: #e0e0ff;
+    }
+    body.blue h1 { background: linear-gradient(90deg, #3b82f6, #9333ea); }
+    body.blue #back-btn { background: #3b82f6; color: #fff; }
+
+    /* Gold theme */
+    body.gold {
+      background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+      color: #fff8c4;
+    }
+    body.gold h1 { background: linear-gradient(90deg, #ffd700, #ff8c42); }
+    body.gold #back-btn { background: #ffd700; color: #000; }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: pulse 2.5s infinite;
+    }
+
+    p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+      margin-top: 10px;
+    }
+
+    .emoji {
+      font-size: 2.5rem;
+      display: inline-block;
+      animation: bounce 1.5s infinite;
+    }
+
+    /* Buttons */
+    .btn {
+      position: fixed;
+      padding: 10px 18px;
+      border: none;
+      border-radius: 30px;
+      font-weight: bold;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 12px rgba(0,0,0,0.3);
+    }
+
+    #theme-toggle {
+      top: 15px;
+      right: 20px;
+      background: linear-gradient(135deg, #4a00e0, #8e2de2);
+      color: #fff;
+    }
+    #theme-toggle:hover { transform: scale(1.08); box-shadow: 0 0 20px rgba(74,0,224,0.7); }
+
+    #back-btn {
+      top: 15px;
+      left: 20px;
+      border-radius: 30px;
+    }
+    #back-btn:hover { transform: scale(1.08); box-shadow: 0 0 20px rgba(0,0,0,0.5); }
+
+    /* Animations */
+    @keyframes pulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.08); } }
+    @keyframes bounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+  </style>
+</head>
+<body class="blue">
+  <button id="theme-toggle" class="btn">Toggle Theme</button>
+  <button id="back-btn" class="btn">⬅ Back</button>
+
+  <div class="container">
+    <h1>I am planning to publish my poems</h1>
+    <p>The book purchase link <span class="emoji">🔧</span> will be available soon!</p>
+  </div>
+
+  <script>
+  // Rotate messages
+  const messages = [
+    "🚀 Something amazing is on the way...",
+    "🛠 The book is being prepared...",
+    "✨ Stay tuned for updates!",
+    "📚 The poetry book coming soon..."
+  ];
+  let i = 0;
+  setInterval(() => {
+    document.querySelector("p").innerHTML = messages[i % messages.length] + " <span class='emoji'>🔧</span>";
+    i++;
+  }, 4000);
+
+  // Theme toggle: Blue <-> Gold
+  const themeBtn = document.getElementById('theme-toggle');
+  themeBtn.addEventListener('click', () => {
+    document.body.classList.toggle('blue');
+    document.body.classList.toggle('gold');
+  });
+
+  // Back button: redirect to index.html
+  const backBtn = document.getElementById('back-btn');
+  backBtn.addEventListener('click', () => {
+    window.location.href = 'index.html';
+  });
+</script>
+
+</body>
+</html>

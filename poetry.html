@@ -1,129 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Poetry Page Have Been Removed</title>
-  <style>
-    /* Reset */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Poetry Page</title>
+<style>
+/* ========== GLOBAL ========== */
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #0a0a0f, #1a1a2e);
+  color: #e0e0ff;
+  transition: background 0.4s, color 0.4s;
+}
 
-    body {
-      font-family: 'Poppins', sans-serif;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      transition: background 0.5s, color 0.5s;
-      position: relative;
-      overflow-x: hidden;
-    }
+/* BLUE ↔ GOLD THEME */
+body.theme-gold {
+  background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+  color: #f5f5f5;
+}
 
-    /* Blue theme */
-    body.blue {
-      background: linear-gradient(135deg, #0a0a0f, #1a1a2e);
-      color: #e0e0ff;
-    }
-    body.blue h1 { background: linear-gradient(90deg, #3b82f6, #9333ea); }
-    body.blue #back-btn { background: #3b82f6; color: #fff; }
+/* THEME TOGGLE BUTTON */
+#theme-toggle {
+  position: fixed;
+  top: 15px;
+  right: 20px;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 30px;
+  background: linear-gradient(135deg, #4a00e0, #8e2de2);
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 1000;
+  box-shadow: 0 0 12px rgba(142, 45, 226, 0.8), 0 0 25px rgba(74, 0, 224, 0.6);
+  transition: all 0.3s ease;
+}
+body.theme-gold #theme-toggle {
+  background: linear-gradient(135deg, #ffd700, #ff9a00);
+  box-shadow: 0 0 12px rgba(255, 215, 0, 0.8), 0 0 25px rgba(255, 154, 0, 0.6);
+}
+#theme-toggle:hover { transform: scale(1.08); }
 
-    /* Gold theme */
-    body.gold {
-      background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
-      color: #fff8c4;
-    }
-    body.gold h1 { background: linear-gradient(90deg, #ffd700, #ff8c42); }
-    body.gold #back-btn { background: #ffd700; color: #000; }
+/* BACK BUTTON */
+#back-btn {
+  position: fixed;
+  top: 15px;
+  left: 20px;
+  padding: 10px 18px;
+  border-radius: 30px;
+  border: none;
+  background: #444;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 1000;
+}
+#back-btn:hover { background: #666; }
 
-    h1 {
-      font-size: 3rem;
-      margin-bottom: 10px;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: pulse 2.5s infinite;
-    }
+/* POEM CARDS */
+.poem-card {
+  max-width: 900px;
+  margin: 80px auto 20px;
+  padding: 20px;
+  border-radius: 25px;
+  backdrop-filter: blur(10px);
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(120, 80, 255, 0.3);
+  box-shadow: 0 4px 18px rgba(50, 30, 100, 0.6);
+  cursor: pointer;
+  transition: all 0.4s ease;
+}
+body.theme-gold .poem-card {
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+}
+.poem-card:hover {
+  transform: scale(1.02);
+}
+.poem-title { font-size: 1.5em; font-weight: 600; margin: 0; }
+.poem-author { font-size: 1em; margin: 5px 0 10px; opacity: 0.8; }
 
-    p {
-      font-size: 1.2rem;
-      opacity: 0.9;
-      margin-top: 10px;
-    }
+/* COLLAPSIBLE CONTENT */
+.poem-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease;
+  white-space: pre-line;
+  margin-top: 10px;
+}
+.poem-card.expanded .poem-content { max-height: 10000px; }
 
-    .emoji {
-      font-size: 2.5rem;
-      display: inline-block;
-      animation: bounce 1.5s infinite;
-    }
-
-    /* Buttons */
-    .btn {
-      position: fixed;
-      padding: 10px 18px;
-      border: none;
-      border-radius: 30px;
-      font-weight: bold;
-      font-size: 14px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 0 12px rgba(0,0,0,0.3);
-    }
-
-    #theme-toggle {
-      top: 15px;
-      right: 20px;
-      background: linear-gradient(135deg, #4a00e0, #8e2de2);
-      color: #fff;
-    }
-    #theme-toggle:hover { transform: scale(1.08); box-shadow: 0 0 20px rgba(74,0,224,0.7); }
-
-    #back-btn {
-      top: 15px;
-      left: 20px;
-      border-radius: 30px;
-    }
-    #back-btn:hover { transform: scale(1.08); box-shadow: 0 0 20px rgba(0,0,0,0.5); }
-
-    /* Animations */
-    @keyframes pulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.08); } }
-    @keyframes bounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-  </style>
+/* RESPONSIVE */
+@media (max-width: 768px) { .poem-card { margin: 100px 20px 20px; } }
+</style>
 </head>
-<body class="blue">
-  <button id="theme-toggle" class="btn">Toggle Theme</button>
-  <button id="back-btn" class="btn">⬅ Back</button>
+<body>
 
-  <div class="container">
-    <h1>I am planning to publish my poems</h1>
-    <p>The book purchase link <span class="emoji">🔧</span> will be available soon!</p>
-  </div>
+<button id="theme-toggle">Toggle Theme</button>
+<button id="back-btn" onclick="location.href='index.html'">Back</button>
 
-  <script>
-  // Rotate messages
-  const messages = [
-    "🚀 Something amazing is on the way...",
-    "🛠 The book is being prepared...",
-    "✨ Stay tuned for updates!",
-    "📚 The poetry book coming soon..."
-  ];
-  let i = 0;
-  setInterval(() => {
-    document.querySelector("p").innerHTML = messages[i % messages.length] + " <span class='emoji'>🔧</span>";
-    i++;
-  }, 4000);
+<div id="poems-container"></div>
 
-  // Theme toggle: Blue <-> Gold
-  const themeBtn = document.getElementById('theme-toggle');
-  themeBtn.addEventListener('click', () => {
-    document.body.classList.toggle('blue');
-    document.body.classList.toggle('gold');
-  });
+<script>
+// THEME TOGGLE
+const themeBtn = document.getElementById('theme-toggle');
+themeBtn.addEventListener('click', () => {
+  document.body.classList.toggle('theme-gold');
+});
 
-  // Back button: redirect to index.html
-  const backBtn = document.getElementById('back-btn');
-  backBtn.addEventListener('click', () => {
-    window.location.href = 'index.html';
-  });
+// FETCH POEMS FROM JSON
+fetch('poems.json')
+  .then(response => response.json())
+  .then(data => {
+    const container = document.getElementById('poems-container');
+    data.forEach(poem => {
+      const card = document.createElement('div');
+      card.className = 'poem-card';
+      card.innerHTML = `
+        <h2 class="poem-title">${poem.title}</h2>
+        <p class="poem-author">${poem.author}</p>
+        <div class="poem-content">${poem.content}</div>
+      `;
+      card.addEventListener('click', () => card.classList.toggle('expanded'));
+      container.appendChild(card);
+    });
+  })
+  .catch(err => console.error('Error loading poems:', err));
 </script>
 
 </body>
