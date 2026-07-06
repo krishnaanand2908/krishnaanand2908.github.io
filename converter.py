@@ -43,7 +43,7 @@ if "à¤" in text or "à¥" in text:
     except Exception:
         pass
 
-# 4) Print clean Hindi to console
+# 4) Print clean Hindi to console 
 print(text)
 
 # 5) Also write as a single JSON string (with \n escapes)
