@@ -1,239 +1,258 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Poetry Page</title>
-<style>
-/* ========== GLOBAL ========== */
-body {
-  font-family: 'Poppins', sans-serif;
-  margin: 0;
-  padding: 0;
-  background: linear-gradient(135deg, #0a0a0f, #1a1a2e);
-  color: #e0e0ff;
-  transition: background 0.4s, color 0.4s;
-}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Poetry Page</title>
+  <style>
+    /* ========== GLOBAL ========== */
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #0a0a0f, #1a1a2e);
+      color: #e0e0ff;
+      transition: background 0.4s, color 0.4s;
+    }
 
-/* BLUE ↔ GOLD THEME */
-body.theme-gold {
-  background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
-  color: #f5f5f5;
-}
+    /* BLUE ↔ GOLD THEME */
+    body.theme-gold {
+      background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+      color: #f5f5f5;
+    }
 
-/* THEME TOGGLE BUTTON */
-#theme-toggle {
-  position: fixed;
-  top: 15px;
-  right: 20px;
-  padding: 10px 18px;
-  border: none;
-  border-radius: 30px;
-  background: linear-gradient(135deg, #4a00e0, #8e2de2);
-  color: #fff;
-  font-weight: bold;
-  cursor: pointer;
-  z-index: 1000;
-  box-shadow: 0 0 12px rgba(142,45,226,.8),0 0 25px rgba(74,0,224,.6);
-  transition: .3s;
-}
+    /* THEME TOGGLE BUTTON */
+    #theme-toggle {
+      position: fixed;
+      top: 15px;
+      right: 20px;
+      padding: 10px 18px;
+      border: none;
+      border-radius: 30px;
+      background: linear-gradient(135deg, #4a00e0, #8e2de2);
+      color: #fff;
+      font-weight: bold;
+      cursor: pointer;
+      z-index: 1000;
+      box-shadow: 0 0 12px rgba(142, 45, 226, .8), 0 0 25px rgba(74, 0, 224, .6);
+      transition: .3s;
+    }
 
-body.theme-gold #theme-toggle{
-  background: linear-gradient(135deg,#ffd700,#ff9a00);
-  box-shadow:0 0 12px rgba(255,215,0,.8),0 0 25px rgba(255,154,0,.6);
-}
+    body.theme-gold #theme-toggle {
+      background: linear-gradient(135deg, #ffd700, #ff9a00);
+      box-shadow: 0 0 12px rgba(255, 215, 0, .8), 0 0 25px rgba(255, 154, 0, .6);
+    }
 
-#theme-toggle:hover{
-  transform:scale(1.08);
-}
+    #theme-toggle:hover {
+      transform: scale(1.08);
+    }
 
-/* BACK BUTTON */
-#back-btn{
-  position:fixed;
-  top:15px;
-  left:20px;
-  padding:10px 18px;
-  border:none;
-  border-radius:30px;
-  background:#444;
-  color:#fff;
-  font-weight:bold;
-  cursor:pointer;
-  z-index:1000;
-}
+    /* BACK BUTTON */
+    #back-btn {
+      position: fixed;
+      top: 15px;
+      left: 20px;
+      padding: 10px 18px;
+      border: none;
+      border-radius: 30px;
+      background: #444;
+      color: #fff;
+      font-weight: bold;
+      cursor: pointer;
+      z-index: 1000;
+    }
 
-#back-btn:hover{
-  background:#666;
-}
+    #back-btn:hover {
+      background: #666;
+    }
 
-/* SEARCH BAR */
-#search-container{
-  position:fixed;
-  top:70px;
-  left:50%;
-  transform:translateX(-50%);
-  width:min(900px,calc(100% - 40px));
-  z-index:999;
+    /* SEARCH BAR */
+    #search-container {
+      position: fixed;
+      top: 70px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(900px, calc(100% - 40px));
+      z-index: 999;
 
-  padding:8px;
-  border-radius:40px;
+      padding: 8px;
+      border-radius: 40px;
 
-  background:rgba(10,10,20,.55);
-  backdrop-filter:blur(12px);
-}
+      background: rgba(10, 10, 20, .55);
+      backdrop-filter: blur(12px);
+    }
 
-body.theme-gold #search-container{
-  background:rgba(40,40,40,.55);
-}
+    body.theme-gold #search-container {
+      background: rgba(40, 40, 40, .55);
+    }
 
-#search{
-  width:100%;
-  padding:14px 20px;
-  font-size:1rem;
-  border:none;
-  outline:none;
-  border-radius:30px;
+    #search {
+      width: 100%;
+      padding: 14px 20px;
+      font-size: 1rem;
+      border: none;
+      outline: none;
+      border-radius: 30px;
 
-  background:rgba(255,255,255,.08);
-  color:#fff;
+      background: rgba(255, 255, 255, .08);
+      color: #fff;
 
-  border:1px solid rgba(120,80,255,.35);
-  transition:.3s;
-}
+      border: 1px solid rgba(120, 80, 255, .35);
+      transition: .3s;
+    }
 
-#search::placeholder{
-  color:#bbb;
-}
+    #search::placeholder {
+      color: #bbb;
+    }
 
-#search:focus{
-  border-color:#8e2de2;
-  box-shadow:0 0 18px rgba(142,45,226,.4);
-}
+    #search:focus {
+      border-color: #8e2de2;
+      box-shadow: 0 0 18px rgba(142, 45, 226, .4);
+    }
 
-body.theme-gold #search{
-  border-color:rgba(255,215,0,.35);
-}
+    body.theme-gold #search {
+      border-color: rgba(255, 215, 0, .35);
+    }
 
-body.theme-gold #search:focus{
-  border-color:#ffd700;
-  box-shadow:0 0 18px rgba(255,215,0,.35);
-}
+    body.theme-gold #search:focus {
+      border-color: #ffd700;
+      box-shadow: 0 0 18px rgba(255, 215, 0, .35);
+    }
 
-/* IMPORTANT */
-#poems-container{
-  padding-top:145px;
-}
+    /* IMPORTANT */
+    #poems-container {
+      padding-top: 145px;
+    }
 
-/* POEM CARDS */
-.poem-card{
-  max-width:900px;
-  margin:50px auto;
-  padding:20px;
+    /* POEM CARDS */
+    .poem-card {
+      max-width: 900px;
+      margin: 50px auto;
+      padding: 20px;
 
-  border-radius:25px;
-  backdrop-filter:blur(10px);
+      border-radius: 25px;
+      backdrop-filter: blur(10px);
 
-  background:rgba(255,255,255,.05);
+      background: rgba(255, 255, 255, .05);
 
-  border:1px solid rgba(120,80,255,.3);
+      border: 1px solid rgba(120, 80, 255, .3);
 
-  box-shadow:0 4px 18px rgba(50,30,100,.6);
+      box-shadow: 0 4px 18px rgba(50, 30, 100, .6);
 
-  cursor:pointer;
-  transition:.4s;
-}
+      cursor: pointer;
+      transition: .4s;
+    }
 
-body.theme-gold .poem-card{
-  border:1px solid rgba(255,215,0,.3);
-  box-shadow:0 4px 15px rgba(0,0,0,.4);
-}
+    body.theme-gold .poem-card {
+      border: 1px solid rgba(255, 215, 0, .3);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, .4);
+    }
 
-.poem-card:hover{
-  transform:scale(1.02);
-}
+    .poem-card:hover {
+      transform: scale(1.02);
+    }
 
-.poem-title{
-  font-size:1.5em;
-  font-weight:600;
-  margin:0;
-}
+    .poem-title {
+      font-size: 1.5em;
+      font-weight: 600;
+      margin: 0;
+    }
 
-.poem-author{
-  margin:5px 0 10px;
-  opacity:.8;
-}
+    .poem-author {
+      margin: 5px 0 10px;
+      opacity: .8;
+    }
 
-.poem-content{
-  max-height:0;
-  overflow:hidden;
-  transition:max-height .5s ease;
-  white-space:pre-line;
-  margin-top:10px;
-}
+    .poem-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .5s ease;
+      white-space: pre-line;
+      margin-top: 10px;
+    }
 
-.poem-card.expanded .poem-content{
-  max-height:10000px;
-}
+    .poem-card.expanded .poem-content {
+      max-height: 10000px;
+    }
 
-/* MOBILE */
-@media (max-width:768px){
+    .download-btn {
+      margin: 10px 0;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: bold;
+      background: linear-gradient(135deg, #4a00e0, #8e2de2);
+      color: white;
+      transition: .25s;
+    }
 
-  #search-container{
-    top:65px;
-    width:calc(100% - 20px);
-  }
+    .download-btn:hover {
+      transform: scale(1.05);
+    }
 
-  #poems-container{
-    padding-top:140px;
-  }
+    body.theme-gold .download-btn {
+      background: linear-gradient(135deg, #ffd700, #ff9a00);
+    }
 
-  .poem-card{
-    margin:20px 15px;
-  }
+    /* MOBILE */
+    @media (max-width:768px) {
 
-}
-</style>
+      #search-container {
+        top: 65px;
+        width: calc(100% - 20px);
+      }
+
+      #poems-container {
+        padding-top: 140px;
+      }
+
+      .poem-card {
+        margin: 20px 15px;
+      }
+
+    }
+  </style>
 </head>
+
 <body>
 
-<button id="theme-toggle">Toggle Theme</button>
-<button id="back-btn" onclick="location.href='index.html'">Back</button>
+  <button id="theme-toggle">Toggle Theme</button>
+  <button id="back-btn" onclick="location.href='index.html'">Back</button>
 
-<div id="search-container">
-    <input
-        type="text"
-        id="search"
-        placeholder="Search poems, titles, authors, or words..."
-        autocomplete="off">
-</div>
+  <div id="search-container">
+    <input type="text" id="search" placeholder="Search poems, titles, authors, or words..." autocomplete="off">
+  </div>
 
-<div id="poems-container"></div>
+  <div id="poems-container"></div>
 
-<script>
-// THEME TOGGLE
-const themeBtn = document.getElementById("theme-toggle");
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script>
+    // THEME TOGGLE
+    const themeBtn = document.getElementById("theme-toggle");
 
-themeBtn.addEventListener("click", () => {
-    document.body.classList.toggle("theme-gold");
-});
-
-const container = document.getElementById("poems-container");
-const searchInput = document.getElementById("search");
-
-let poems = [];
-
-fetch("poems.json")
-    .then(res => res.json())
-    .then(data => {
-        poems = data;
-        displayPoems(poems);
+    themeBtn.addEventListener("click", () => {
+      document.body.classList.toggle("theme-gold");
     });
 
-function displayPoems(list){
+    const container = document.getElementById("poems-container");
+    const searchInput = document.getElementById("search");
+
+    let poems = [];
+
+    fetch("poems.json")
+      .then(res => res.json())
+      .then(data => {
+        poems = data;
+        displayPoems(poems);
+      });
+
+    function displayPoems(list) {
 
     container.innerHTML = "";
 
-    if(list.length === 0){
+    if (list.length === 0) {
         container.innerHTML = `
             <div style="text-align:center;margin-top:60px;font-size:1.2rem;opacity:.7;">
                 No poems found.
@@ -242,7 +261,7 @@ function displayPoems(list){
         return;
     }
 
-    list.forEach(poem=>{
+    list.forEach(poem => {
 
         const card = document.createElement("div");
         card.className = "poem-card";
@@ -250,10 +269,56 @@ function displayPoems(list){
         card.innerHTML = `
             <h2 class="poem-title">${poem.title}</h2>
             <p class="poem-author">${poem.author}</p>
+
+            <button class="download-btn">⬇ Download</button>
+
             <div class="poem-content">${poem.content}</div>
         `;
 
-        card.addEventListener("click",()=>{
+        const downloadBtn = card.querySelector(".download-btn");
+
+        // Download card as image
+        downloadBtn.addEventListener("click", async (e) => {
+
+            e.stopPropagation();
+
+            // Remember expansion state
+            const wasExpanded = card.classList.contains("expanded");
+
+            // Expand temporarily if collapsed
+            if (!wasExpanded) {
+                card.classList.add("expanded");
+                await new Promise(resolve => setTimeout(resolve, 500));
+            }
+
+            // Hide button from screenshot
+            downloadBtn.style.visibility = "hidden";
+
+            // Capture card
+            const canvas = await html2canvas(card, {
+                scale: 3,
+                useCORS: true,
+                backgroundColor: null
+            });
+
+            // Show button again
+            downloadBtn.style.visibility = "visible";
+
+            // Restore expansion state
+            if (!wasExpanded) {
+                card.classList.remove("expanded");
+            }
+
+            // Download image
+            const link = document.createElement("a");
+            link.download = `${poem.title}.png`;
+            link.href = canvas.toDataURL("image/png");
+            link.click();
+
+        });
+
+        // Expand/collapse card
+        card.addEventListener("click", () => {
             card.classList.toggle("expanded");
         });
 
@@ -263,31 +328,32 @@ function displayPoems(list){
 
 }
 
-function normalizeText(text) {
-    return text
+    function normalizeText(text) {
+      return text
         .normalize("NFC") // Normalize Unicode (important for Hindi)
         .toLowerCase()
         .trim();
-}
+    }
 
-searchInput.addEventListener("input", () => {
+    searchInput.addEventListener("input", () => {
 
-    const query = normalizeText(searchInput.value);
+      const query = normalizeText(searchInput.value);
 
-    const filtered = poems.filter(poem => {
+      const filtered = poems.filter(poem => {
 
         return (
-            normalizeText(poem.title).includes(query) ||
-            normalizeText(poem.author).includes(query) ||
-            normalizeText(poem.content).includes(query)
+          normalizeText(poem.title).includes(query) ||
+          normalizeText(poem.author).includes(query) ||
+          normalizeText(poem.content).includes(query)
         );
 
+      });
+
+      displayPoems(filtered);
+
     });
-
-    displayPoems(filtered);
-
-});
-</script>
+  </script>
 
 </body>
+
 </html>
