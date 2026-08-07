@@ -227,6 +227,8 @@
 
   <div id="poems-container"></div>
 
+  
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   <script>
     // THEME TOGGLE
@@ -294,12 +296,27 @@
             // Hide button from screenshot
             downloadBtn.style.visibility = "hidden";
 
+
+            const originalBackground = card.style.background;
+            const originalBackdrop = card.style.backdropFilter;
+
+            if (document.body.classList.contains("theme-gold")) {
+                card.style.background = "#2d2d2d";
+            } else {
+                card.style.background = "#1a1a2e";
+            }
+
+            card.style.backdropFilter = "none";
+            
             // Capture card
             const canvas = await html2canvas(card, {
                 scale: 3,
                 useCORS: true,
                 backgroundColor: null
             });
+
+            card.style.background = originalBackground;
+            card.style.backdropFilter = originalBackdrop;
 
             // Show button again
             downloadBtn.style.visibility = "visible";
