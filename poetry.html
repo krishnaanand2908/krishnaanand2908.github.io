@@ -294,7 +294,7 @@
             }
 
             // Hide button from screenshot
-            downloadBtn.style.visibility = "hidden";
+            downloadBtn.style.display = "none";
 
 
             const originalBackground = card.style.background;
@@ -319,7 +319,7 @@
             card.style.backdropFilter = originalBackdrop;
 
             // Show button again
-            downloadBtn.style.visibility = "visible";
+            downloadBtn.style.display = "";
 
             // Restore expansion state
             if (!wasExpanded) {
