@@ -263,7 +263,7 @@
         return;
     }
 
-    list.forEach(poem => {
+    [...list].reverse().forEach(poem => {
 
         const card = document.createElement("div");
         card.className = "poem-card";
