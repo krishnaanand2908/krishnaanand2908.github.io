@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#17152b">
+<title>School Desk — Quick Documents</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+Bhai+2:wght@500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{font-family:'Poppins',sans-serif;color-scheme:dark;--panel:rgba(255,255,255,.06);--line:rgba(167,139,250,.25);--muted:#aaa8c7;--accent:#a78bfa;--accent2:#60a5fa;--text:#eeeaff;--bg1:#0a0a0f;--bg2:#1a1a2e}
+*{box-sizing:border-box}html{min-height:100%;scroll-behavior:smooth}body{margin:0;min-height:100vh;color:var(--text);background:linear-gradient(135deg,var(--bg1),var(--bg2));font-family:'Poppins',sans-serif;overflow-x:hidden;position:relative}
+body:before,body:after{content:"";position:fixed;z-index:-1;border-radius:50%;filter:blur(2px);opacity:.35;pointer-events:none;animation:float 14s ease-in-out infinite alternate}
+body:before{width:320px;height:320px;top:-100px;left:-110px;background:radial-gradient(circle,#6d28d9,#3b0764)}
+body:after{width:420px;height:420px;right:-150px;bottom:-150px;background:radial-gradient(circle,#0ea5e9,#1e3a8a)}
+@keyframes float{to{transform:translateY(-25px) scale(1.06)}}
+body.gold{--bg1:#1a1a1a;--bg2:#2d2d2d;--accent:#ffd700;--accent2:#ff8c42;--line:rgba(255,215,0,.25)}
+body.gold:before{background:radial-gradient(circle,#ff4500,#d72638)}body.gold:after{background:radial-gradient(circle,#ffd700,#ff8c42)}
+header{padding:32px 20px 26px;text-align:center;background:linear-gradient(135deg,#1e1b4b,#312e81,#4c1d95);border-bottom:5px solid #3b82f6;border-radius:0 0 34px 34px;box-shadow:0 4px 18px rgba(100,80,255,.3)}
+body.gold header{background:linear-gradient(135deg,#d72638,#ff8c42,#ffd700);border-color:#ff4500}
+.brand{font-family:'Baloo Bhai 2',sans-serif;font-size:clamp(2rem,5vw,3rem);line-height:1.1;margin:0;color:#f0eaff}
+header p{margin:8px 0 0;color:#d8d4ff;font-size:.95rem}
+.topline{max-width:1100px;margin:0 auto;display:flex;justify-content:flex-end;padding:14px 18px 0}
+button,.btn{font:600 .9rem 'Poppins',sans-serif;border:0;border-radius:24px;padding:10px 16px;cursor:pointer;transition:.2s;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:7px}
+button:hover,.btn:hover{transform:translateY(-2px);filter:brightness(1.12)}
+.theme{color:white;background:linear-gradient(135deg,#4a00e0,#8e2de2);box-shadow:0 0 12px #8e2de277}
+body.gold .theme{background:linear-gradient(135deg,#ffd700,#ff9a00);color:#242018}
+main{width:min(1050px,calc(100% - 32px));margin:24px auto 55px}
+.panel{background:var(--panel);border:1px solid var(--line);box-shadow:0 8px 28px rgba(0,0,0,.2);backdrop-filter:blur(12px);border-radius:22px;padding:22px;margin:18px 0}
+h2{font-size:1.25rem;margin:0 0 14px;color:var(--accent)}
+h2:after{content:"";display:block;width:55px;height:3px;background:var(--accent2);border-radius:5px;margin-top:6px}
+.toolbar{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center}
+input,select{width:100%;min-width:0;background:rgba(8,8,20,.55);color:var(--text);border:1px solid var(--line);border-radius:13px;padding:12px 14px;font:inherit;outline:none}
+input:focus,select:focus{border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 18%,transparent)}
+.primary{background:linear-gradient(100deg,#4f46e5,#9333ea);color:white}
+body.gold .primary{background:linear-gradient(100deg,#ff4500,#ffd700);color:#21180c}
+.secondary{background:rgba(255,255,255,.1);color:var(--text);border:1px solid var(--line)}
+.danger{background:rgba(239,68,68,.15);color:#ffaaaa;border:1px solid rgba(239,68,68,.25)}
+.form-grid{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:10px}
+.form-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.hint{font-size:.8rem;color:var(--muted);margin:10px 0 0}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}
+.chip{padding:7px 12px;font-size:.8rem;background:rgba(255,255,255,.07);border:1px solid var(--line);color:var(--text)}
+.chip.active{background:var(--accent);color:#171225}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:13px}
+.doc{border:1px solid var(--line);border-radius:17px;background:rgba(255,255,255,.055);padding:15px;min-width:0;transition:.2s}
+.doc:hover{transform:translateY(-3px);box-shadow:0 8px 20px #0003}
+.doc-top{display:flex;justify-content:space-between;gap:8px;align-items:flex-start}
+.doc-icon{font-size:1.5rem}.doc h3{font-size:1rem;margin:8px 0 4px;overflow-wrap:anywhere}
+.meta{font-size:.76rem;color:var(--muted);margin:0 0 12px}
+.doc-actions{display:flex;gap:8px;flex-wrap:wrap}.doc-actions a{flex:1}
+.open{background:linear-gradient(100deg,#3b82f6,#7c3aed);color:white}
+.empty{text-align:center;color:var(--muted);padding:30px 10px}
+footer{text-align:center;color:var(--muted);font-size:.78rem;padding:15px 20px 25px}
+footer strong{color:var(--accent)}
+
+.drive-heading{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.drive-heading h2{margin-bottom:5px}.drive-heading .hint{margin:0}
+.breadcrumbs{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin:15px 0;color:var(--muted);font-size:.86rem}
+.breadcrumbs button{padding:5px 9px;background:rgba(255,255,255,.07);color:var(--text);font-size:.82rem}
+.breadcrumbs span{opacity:.65}
+.doc{display:flex;flex-direction:column;min-height:150px}
+.doc h3{margin:10px 0 5px}
+.doc .meta{overflow-wrap:anywhere}
+.doc-actions{margin-top:auto}
+.doc-actions a{flex:1}
+.folder-open{background:linear-gradient(100deg,#4f46e5,#9333ea);color:white}
+body.gold .folder-open{background:linear-gradient(100deg,#ff4500,#ffd700);color:#21180c}
+.error{padding:14px;border-radius:12px;background:rgba(239,68,68,.13);border:1px solid rgba(239,68,68,.3);color:#ffb4b4;margin-top:12px;font-size:.88rem;overflow-wrap:anywhere}
+
+@media(max-width:650px){header{padding:26px 16px 22px}.topline{justify-content:center}.toolbar{grid-template-columns:1fr}.form-grid{grid-template-columns:1fr}.panel{padding:17px;margin:14px 0}main{width:min(100% - 22px,1050px)}.cards{grid-template-columns:1fr}button,.btn{min-height:42px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<header>
+  <h1 class="brand">📚 School Desk</h1>
+  <p>Your important documents. One tap away.</p>
+</header>
+<div class="topline"><button class="theme" id="themeBtn" type="button">🌙 Switch to Gold</button></div>
+<main>
+  <section class="panel">
+    <div class="drive-heading">
+      <div>
+        <h2>My Drive</h2>
+        <p class="hint" id="connectionStatus" role="status">Connect your Google Drive folder to load its contents.</p>
+      </div>
+      <button class="secondary" id="refreshBtn" type="button">↻ Refresh</button>
+    </div>
+    <nav class="breadcrumbs" id="breadcrumbs" aria-label="Folder path"></nav>
+    <div class="toolbar">
+      <input id="search" type="search" placeholder="Search this folder…" aria-label="Search current folder">
+      <select id="sortBy" aria-label="Sort items">
+        <option value="name">Name</option>
+        <option value="type">Folders first</option>
+      </select>
+    </div>
+    <div class="filters" id="quickFilters">
+      <button class="chip active" data-filter="all" type="button">All items</button>
+      <button class="chip" data-filter="folder" type="button">📁 Folders</button>
+      <button class="chip" data-filter="file" type="button">📄 Files</button>
+    </div>
+    <div class="cards" id="documents" aria-live="polite"></div>
+    <div class="empty" id="empty" hidden>No items in this folder.</div>
+    <div class="error" id="errorBox" hidden></div>
+  </section>
+  <section class="panel">
+    <h2>Manage your Drive folder</h2>
+    <p style="font-size:.9rem;line-height:1.8;margin-bottom:8px">Add, rename or move folders and files directly inside your chosen Google Drive folder. Then press <strong>Refresh</strong> here. New folders and files will appear automatically in the listing.</p>
+    <a class="btn primary" id="driveFolderLink" href="https://drive.google.com/drive/my-drive" target="_blank" rel="noopener noreferrer">↗ Open Google Drive folder</a>
+    <p class="hint">This website is a read-only browser: it can list and open items, but it cannot upload, delete or change Drive files.</p>
+  </section>
+  <section class="panel">
+    <h2>Privacy & access</h2>
+    <p class="hint" style="font-size:.9rem;line-height:1.8">This webpage is public, so folder names and file names returned by the backend can be seen by anyone. Only put documents here that are safe to publish. Keep identity cards, marksheets, medical records and other personal documents in a separate private Drive folder. Files also need appropriate Drive sharing permissions before visitors can open them.</p>
+  </section>
+</main>
+<footer>Made for the school-day rush · <strong>Stay prepared.</strong></footer>
+<script>
+/*
+  SETUP: paste your deployed Google Apps Script web-app URL below.
+  Example: https://script.google.com/macros/s/AKfy.../exec
+*/
+const API_URL = "https://script.google.com/macros/s/AKfycbyI4axNqpIY8Ws5BOnqmVLOAoYWj-YefUGSIODCu2Ze1fv1RLiGsyZj045YD8qiBikJzQ/exec";
+let currentFolderId = "";
+let folderStack = [{id:"", name:"School Desk"}];
+let items = [];
+let activeFilter = "all";
+const $ = id => document.getElementById(id);
+
+function jsonp(params) {
+  return new Promise((resolve, reject) => {
+    if (!API_URL.startsWith("https://script.google.com/")) {
+      reject(new Error("Add your deployed Apps Script URL to API_URL in this HTML file first."));
+      return;
+    }
+    const callbackName = "schoolDeskCallback_" + Date.now() + "_" + Math.floor(Math.random()*100000);
+    const script = document.createElement("script");
+    const timeout = setTimeout(() => finish(new Error("Drive request timed out. Please try refreshing.")), 20000);
+    function finish(error, data) {
+      clearTimeout(timeout);
+      delete window[callbackName];
+      script.remove();
+      error ? reject(error) : resolve(data);
+    }
+    window[callbackName] = data => finish(null, data);
+    const query = new URLSearchParams({...params, callback:callbackName});
+    script.src = API_URL + "?" + query.toString();
+    script.onerror = () => finish(new Error("Could not reach Apps Script. Check the deployment URL and web-app access settings."));
+    document.head.appendChild(script);
+  });
+}
+
+function setStatus(message){ $("connectionStatus").textContent = message; }
+function showError(message){ $("errorBox").hidden = false; $("errorBox").textContent = message; }
+function clearError(){ $("errorBox").hidden = true; $("errorBox").textContent = ""; }
+
+function renderBreadcrumbs(){
+  const nav = $("breadcrumbs"); nav.replaceChildren();
+  folderStack.forEach((folder,index)=>{
+    if(index) { const sep=document.createElement("span"); sep.textContent="›"; nav.append(sep); }
+    const b=document.createElement("button"); b.className="secondary"; b.type="button"; b.textContent=folder.name;
+    b.addEventListener("click",()=>{folderStack=folderStack.slice(0,index+1);currentFolderId=folder.id;loadFolder()});
+    nav.append(b);
+  });
+}
+
+function render(){
+  const term=$("search").value.trim().toLowerCase();
+  const sort=$("sortBy").value;
+  let visible=items.filter(item=>(activeFilter==="all" || (activeFilter==="folder" ? item.isFolder : !item.isFolder)) && item.name.toLowerCase().includes(term));
+  visible.sort((a,b)=>sort==="type" ? Number(b.isFolder)-Number(a.isFolder) || a.name.localeCompare(b.name) : a.name.localeCompare(b.name));
+  const container=$("documents"); container.replaceChildren();
+  visible.forEach(item=>{
+    const card=document.createElement("article");card.className="doc";
+    const top=document.createElement("div");top.className="doc-top";
+    const icon=document.createElement("span");icon.className="doc-icon";icon.textContent=item.isFolder?"📁":(item.mimeType==="application/pdf"?"📕":"📄");
+    const type=document.createElement("span");type.className="meta";type.textContent=item.isFolder?"Folder":(item.mimeType==="application/pdf"?"PDF":"File");
+    top.append(icon,type);
+    const title=document.createElement("h3");title.textContent=item.name;
+    const meta=document.createElement("p");meta.className="meta";meta.textContent=item.isFolder?"Open folder to view its contents":(item.modifiedTime ? "Updated "+new Date(item.modifiedTime).toLocaleDateString() : "Google Drive file");
+    const actions=document.createElement("div");actions.className="doc-actions";
+    if(item.isFolder){
+      const open=document.createElement("button");open.className="btn folder-open";open.type="button";open.textContent="Open folder";
+      open.addEventListener("click",()=>{folderStack.push({id:item.id,name:item.name});currentFolderId=item.id;loadFolder()});
+      actions.append(open);
+    }else{
+      const a=document.createElement("a");a.className="btn folder-open";a.textContent="↗ Open file";a.href=item.url;a.target="_blank";a.rel="noopener noreferrer";actions.append(a);
+    }
+    card.append(top,title,meta,actions);container.append(card);
+  });
+  $("empty").hidden=visible.length!==0;
+  document.querySelectorAll(".chip").forEach(b=>b.classList.toggle("active",b.dataset.filter===activeFilter));
+}
+
+async function loadFolder(){
+  clearError();renderBreadcrumbs();$("documents").replaceChildren();$("empty").hidden=true;
+  setStatus("Loading Google Drive…");$("refreshBtn").disabled=true;
+  try{
+    const data=await jsonp({action:"list",folderId:currentFolderId});
+    if(!data || !data.ok) throw new Error(data && data.error ? data.error : "Unexpected response from Google Drive.");
+    items=Array.isArray(data.items)?data.items:[];
+    setStatus(`${items.length} item${items.length===1?"":"s"} · Last refreshed ${new Date().toLocaleTimeString()}`);
+    render();
+    if(data.folderUrl) $("driveFolderLink").href=data.folderUrl;
+  }catch(err){setStatus("Could not load this folder.");showError(err.message);items=[];render()}
+  finally{$("refreshBtn").disabled=false}
+}
+$("refreshBtn").addEventListener("click",loadFolder);
+$("search").addEventListener("input",render);
+$("sortBy").addEventListener("change",render);
+document.querySelectorAll(".chip").forEach(b=>b.addEventListener("click",()=>{activeFilter=b.dataset.filter;render()}));
+loadFolder();
+</script>
+</body>
+</html>
